@@ -99,8 +99,8 @@ public class PaypalServiceImpl implements PaypalService {
             throw new NotFoundException("No se encontró el plan");
         }
 
-        String returnUrl = "http://localhost:4200/payment-success"; // Frontend
-        String cancelUrl = "http://localhost:4200/dashboard";   // Frontend
+        String returnUrl = "https://eduacces-web.vercel.app/payment-success"; // Frontend
+        String cancelUrl = "https://eduacces-web.vercel.app/dashboard";   // Frontend
 
         String orderId = createOrder(plan.getPrecio(), returnUrl, cancelUrl, userId, idPlan);
         if (orderId == null) {
