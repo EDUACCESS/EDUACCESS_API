@@ -39,8 +39,7 @@ public class PaypalController {
 
     @PostMapping("/create-order")
     public String  createOrder(@RequestParam double totalAmount, Long userId, Integer idPlan) {
-        //String returnUrl = "https://govench-api.onrender.com/api/v1/admin/payments/payment";
-        String returnUrl = "https://eduacces-web.vercel.app/payment-success";
+        String returnUrl = "http://localhost:4200/payment-success";
         String cancelUrl = "https://blog.fluidui.com/top-404-error-page-examples/";
         try {
             String orderId = paypalService.createOrder(totalAmount, returnUrl, cancelUrl,  userId,  idPlan);
@@ -64,8 +63,8 @@ public String pagarPlan(@PathVariable Integer idPlan) throws IOException {
     Long userId = Long.valueOf(userService.findUserByEmail(email).getId().toString());
 
     // Configurar URLs de retorno al frontend
-    String returnUrl = "https://eduacces-web.vercel.app/payment-success";
-    String cancelUrl = "https://eduacces-web.vercel.app/dashboard";
+    String returnUrl = "http://localhost:4200/payment-success";
+    String cancelUrl = "http://localhost:4200/dashboard";
 
     // Llamar al método pagarPlan en lugar de createOrder
     String orderId = paypalService.pagarPlan(idPlan, userId);
